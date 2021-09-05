@@ -1,0 +1,36 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+events-app/node_modules
+events-app/.pnp
+events-app/.pnp.js
+/node_modules
+# testing
+events-app/coverage
+
+# next.js
+events-app/.next/
+events-app/out/
+package.json
+package-lock.json
+
+# production
+events-app/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+events-app/npm-debug.log*
+events-app/yarn-debug.log*
+events-app/yarn-error.log*
+
+# local env files
+events-app/.env.local
+events-app/.env.development.local
+events-app/.env.test.local
+events-app/.env.production.local
+
+# vercel
+events-app/.vercel
