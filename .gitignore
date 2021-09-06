@@ -9,10 +9,11 @@ events-app/.pnp.js
 events-app/coverage
 
 # next.js
+events-app/public/
 events-app/.next/
 events-app/out/
-package.json
-package-lock.json
+/package.json
+/package-lock.json
 
 # production
 events-app/build
