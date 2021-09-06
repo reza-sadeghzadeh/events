@@ -42,7 +42,7 @@ const EventCreator: React.FC<EventCreatorProps> = ({ events }) => {
                 </address>
               </div>
               <p>{e.summary} </p>
-              <Link href={`/events/${e.eventId}`}>صفحه رویداد</Link>
+              <Link href={`/events/${e.id}`}>صفحه رویداد</Link>
             </div>
           </li>
         ))}

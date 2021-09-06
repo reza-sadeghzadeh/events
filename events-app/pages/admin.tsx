@@ -173,8 +173,8 @@ const Div = styled.main`
   h1 {
     margin-top: 5vh;
     text-align: right;
-    opacity: 0.5;
-    text-decoration: underline;
+    opacity: 0.7;
+    color: #9b4dca;
   }
 
   form {

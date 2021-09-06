@@ -1,7 +1,7 @@
 import { GetServerSideProps } from "next";
 import styled from "styled-components";
-import EventCreator from "../components/EventCreator";
-import { getAllData, getPageData } from "../withDB";
+import EventCreator from "../../components/EventCreator";
+import { getAllData, getPageData } from "../../withDB";
 import { useState, useEffect } from "react";
 import _ from "lodash";
 import Router from "next/router";
@@ -18,7 +18,7 @@ const Home: React.FC<HomeProps> = ({ JData, length, page, numberInPage }) => {
   const [currentPage, setCurrentPage] = useState(+page);
 
   useEffect(() => {
-    Router.push(`/?currentPage=${currentPage}`);
+    Router.push(`/events/?currentPage=${currentPage}`);
   }, [currentPage]);
 
   let end = Math.ceil(+length / +numberInPage);
@@ -50,6 +50,10 @@ export const getServerSideProps: GetServerSideProps = async (ctx: any) => {
   let allData = await getAllData();
   let length = allData.length;
 
+  if (page > Math.ceil(+length / +numberInPage))
+    return {
+      notFound: true,
+    };
   return {
     props: { JData, length, page, numberInPage },
   };

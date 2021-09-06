@@ -1,4 +1,6 @@
 import "../styles/global-styles.css";
+import React from "react";
+import Router from "next/router";
 import type { AppProps } from "next/app";
 import styled from "styled-components";
 import { ThemeProvider } from "styled-components";

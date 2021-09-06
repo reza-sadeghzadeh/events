@@ -66,3 +66,8 @@ export const getPageData = async (page: number, numberInPage: number) => {
     .sort("date")
     .limit(numberInPage);
 };
+export const getOneEventById = async (id: string) => {
+  const Model = eventModel();
+  let event = await Model.findOne({ id: id });
+  return event;
+};
