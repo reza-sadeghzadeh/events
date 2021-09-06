@@ -57,3 +57,12 @@ export const getAllData = async () => {
   const Model = eventModel();
   return await Model.find().sort("date");
 };
+export const getPageData = async (page: number, numberInPage: number) => {
+  const Model = eventModel();
+  return await Model.find({
+    date: { $gt: Date.now() },
+  })
+    .skip((page - 1) * numberInPage)
+    .sort("date")
+    .limit(numberInPage);
+};

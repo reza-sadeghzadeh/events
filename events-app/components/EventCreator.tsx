@@ -14,11 +14,12 @@ const EventCreator: React.FC<EventCreatorProps> = ({ events }) => {
       <ul>
         {events.map((e: any) => (
           <li key={e.id}>
-            {e.date && (
+            {0 < new Date(e.date).getTime() - Date.now() &&
+            new Date(e.date).getTime() - Date.now() < 3600 * 24 * 30 * 1000 ? (
               <div className="badge">
                 <h3>رویداد نزدیک</h3>
               </div>
-            )}
+            ) : null}
             <div>
               <Image src={e.path} alt={e.title} width={400} height={100} />
               <h2>{e.title}</h2>

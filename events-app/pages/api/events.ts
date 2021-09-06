@@ -36,10 +36,10 @@ apiRoute.post(async (req, res) => {
     let Model = eventModel();
     let fake = new Model({ ...data });
     fake = await fake.save();
-    res.status(200).json(fake);
+    res.status(200).json({});
   } catch (ex) {
     console.log(ex);
-    res.status(200).send("s");
+    res.status(200).send({});
   }
 });
 
