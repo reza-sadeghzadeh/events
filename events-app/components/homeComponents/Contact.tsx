@@ -20,7 +20,7 @@ export default Contact;
 const Div = styled.section`
   flex-direction: column;
   margin-top: 6rem;
-  margin-bottom: 10rem;
+  margin-bottom: 3rem;
 
   .holder {
     width: 270px;
@@ -28,8 +28,8 @@ const Div = styled.section`
     margin-right: 5rem;
     font-weight: 100;
 
-    h2{
-        font-weight:200;
+    h2 {
+      font-weight: 200;
     }
 
     ::after {
@@ -51,42 +51,38 @@ const Div = styled.section`
       left: 105%;
     }
   }
-}
 
-.input-holder {
-    width: clamp(300px , 80% , 600px);
+  .input-holder {
+    width: clamp(300px, 80%, 600px);
     flex-direction: column;
-    margin-top:4rem ;
+    margin-top: 4rem;
 
-    input{
-        margin: 0 0.5rem;
+    input {
+      margin: 0 0.5rem;
     }
 
-  button {
-    border: 1px solid #9b4dca;
-    font-weight: 100;
-    transition: 0.3s ease all;
-    background-color: white;
-    color: #9b4dca;
-    margin-top:2rem;
+    button {
+      border: 1px solid #9b4dca;
+      font-weight: 100;
+      transition: 0.3s ease all;
+      background-color: white;
+      color: #9b4dca;
+      margin-top: 2rem;
 
-    :hover {
-    background-color: #9b4dca;
-    color: white;
+      :hover {
+        background-color: #9b4dca;
+        color: white;
+      }
     }
-   } 
   }
-
 
   @media screen and (min-width: 700px) {
     .input-holder {
-        flex-direction: row;
+      flex-direction: row;
 
-        button{
-            margin :0
-        }
+      button {
+        margin: 0;
+      }
     }
   }
-  
-  
 `;

@@ -1,6 +1,7 @@
 import EventCreator from "./EventCreator";
 import { Autoplay } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
+import Router from "next/router";
 
 // Import Swiper styles
 import "swiper/css";
@@ -24,11 +25,12 @@ const SwiperComponent: React.FC<SwiperComponentProps> = ({
       clearInterval(interval);
     };
   }, []);
+
   return (
     <Swiper
       // install Swiper modules
       modules={[Autoplay]}
-      autoplay={true}
+      autoplay={Router ? true : false}
       spaceBetween={perView < 2 ? 0 : -100}
       slidesPerView={perView}
     >

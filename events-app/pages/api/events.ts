@@ -4,8 +4,6 @@ import { eventModel } from "../../withDB";
 import nextConnect from "next-connect";
 import multer from "multer";
 
-import "../../withDB/connection";
-
 // type Data = {
 //   name: string[];
 // };
