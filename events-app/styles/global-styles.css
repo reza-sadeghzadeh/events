@@ -9,11 +9,14 @@
 @font-face {
   font-family: vazir;
   src: url("./Vazir-Variable.woff2") format("woff2");
+}
+@font-face {
+  font-family: vazir-black;
+  src: url("./Vazir-Black.woff2") format("woff2");
   font-style: normal;
 }
 
 body {
-  margin: 0;
   font-family: vazir;
 }
 

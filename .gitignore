@@ -9,7 +9,7 @@ events-app/.pnp.js
 events-app/coverage
 
 # next.js
-events-app/public/
+events-app/public/uploads
 events-app/.next/
 events-app/out/
 /package.json

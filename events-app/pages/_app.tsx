@@ -1,10 +1,12 @@
 import "../styles/global-styles.css";
+import "../styles/custom-classes.css";
 import React from "react";
 import Router from "next/router";
 import type { AppProps } from "next/app";
 import styled from "styled-components";
 import { ThemeProvider } from "styled-components";
 import { QueryClient, QueryClientProvider } from "react-query";
+import HeaderNav from "../components/Header";
 
 const queryClient = new QueryClient();
 
@@ -14,7 +16,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     <Div>
       <QueryClientProvider client={queryClient}>
         <ThemeProvider theme={theme}>
-          {/* <Header/> */}
+          <HeaderNav />
           <Component {...pageProps} />
         </ThemeProvider>
       </QueryClientProvider>
@@ -25,4 +27,5 @@ export default MyApp;
 
 const Div = styled.main`
   direction: rtl;
+  overflow-x: hidden;
 `;
