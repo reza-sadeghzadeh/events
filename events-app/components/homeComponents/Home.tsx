@@ -10,9 +10,9 @@ function Home() {
         <div className="hero"></div>
         <div className="content flex-center">
           <h1>رویدادها</h1>
-          <h2>شرکت در بهترین رویداد ها</h2>
+          <h2>شرکت در بهترین رویدادها</h2>
           <button onClick={() => Router.push("/events?currentPage=1")}>
-            مشاهده رویداد ها
+            مشاهده رویدادها
           </button>
         </div>
         <div className="box flex-center">
@@ -30,7 +30,7 @@ function Home() {
 
 export default Home;
 
-const Div = styled.main`
+const Div = styled.section`
   width: 100%;
   overflow-y: visible;
 

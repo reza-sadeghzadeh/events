@@ -1,5 +1,14 @@
 import mongoose from "mongoose";
-import "./connection";
+
+function connectToDb() {
+  mongoose
+    .connect("mongodb://localhost:27017/events")
+    .catch((ex) => console.log(ex))
+    .then(() => {
+      console.log("connected to db....");
+    });
+}
+connectToDb();
 
 export const eventModel = () => {
   //I might change this in the future
@@ -70,4 +79,11 @@ export const getOneEventById = async (id: string) => {
   const Model = eventModel();
   let event = await Model.findOne({ id: id });
   return event;
+};
+export const getClosestEvents = async () => {
+  const Model = eventModel();
+  let events = await Model.find({
+    date: { $gt: Date.now(), $lt: Date.now() + 24 * 3600 * 30 * 1000 },
+  });
+  return events;
 };
