@@ -25,16 +25,16 @@ export default Header;
 const Div = styled.nav`
   background-color: #fff;
   width: 100%;
+  border-bottom: 1px solid #d1d1d1;
+  position: fixed;
+  top: 0;
+  z-index: 10;
 
   .container {
-    padding: 0 2rem;
     width: 100%;
+    padding: 0 2rem;
     justify-content: space-between;
-    position: sticky;
-    z-index: 10;
     height: 80px;
-    top: 0;
-    border-bottom: 1px solid #d1d1d1;
 
     img {
       cursor: pointer;
@@ -48,7 +48,7 @@ const Div = styled.nav`
     .content {
       h3 {
         cursor: pointer;
-        font-weight: 100;
+        font-weight: 200;
       }
       button {
         border: 1px solid #9b4dca;

@@ -32,28 +32,28 @@ export default Home;
 
 const Div = styled.main`
   width: 100%;
+  overflow-y: visible;
 
   .container {
+    overflow-y: visible;
     width: 100%;
-
     color: white;
     position: relative;
     flex-direction: column;
-    margin-bottom: 50rem;
 
     .hero {
+      border-bottom: 5px solid #1d1d1d;
       transform: skewY(-8deg) translateY(-30%);
+      overflow-y: visible;
       height: 1300px;
       width: 100vw;
       top: 0;
       background-color: #9b4dca;
       position: absolute;
       z-index: -1;
-      border-bottom: 5px solid #1d1d1d;
     }
     .content {
       flex-direction: column;
-      /* height: 100px; */
       margin-top: 7rem;
       h1 {
         font-size: 90px;
@@ -65,7 +65,7 @@ const Div = styled.main`
       h2 {
         margin: 0;
         font-size: 30px;
-        font-weight: 100;
+        font-weight: 200;
       }
       button {
         margin-top: 2.5rem;
@@ -92,7 +92,7 @@ const Div = styled.main`
       background-color: white;
     }
 
-    @media screen and (min-width: 1050px) {
+    @media screen and (min-width: 1000px) {
       flex-direction: row;
       justify-content: space-evenly;
       align-items: flex-start;
