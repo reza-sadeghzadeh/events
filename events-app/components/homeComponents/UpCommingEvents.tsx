@@ -13,7 +13,7 @@ const UpCommingEvents: React.FC<UpCommingEventsProps> = ({
     <>
       <Div>
         <div className="holder">
-          <h1>رویدادهای نزدیک</h1>
+          <h2>رویدادهای نزدیک</h2>
         </div>
       </Div>
       <SwiperComponent events={events} />
@@ -27,10 +27,12 @@ const Div = styled.section`
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
+  margin: 0;
 
   .holder {
+    width: 180px;
     position: relative;
-    margin-right: 5rem;
+    margin-right: 1rem;
     font-weight: 100;
 
     ::after {
@@ -40,8 +42,12 @@ const Div = styled.section`
       width: 100vw;
       background-color: #9b4dca;
       top: 50%;
-      right: 110%;
+      right: 100%;
     }
   }
-  display: flex;
+  @media screen and (min-width: 1000px) {
+    .holder {
+      margin-right: 5rem;
+    }
+  }
 `;

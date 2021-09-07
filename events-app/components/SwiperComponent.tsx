@@ -1,7 +1,5 @@
 import EventCreator from "./EventCreator";
-
 import { Autoplay } from "swiper";
-
 import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
@@ -31,7 +29,7 @@ const SwiperComponent: React.FC<SwiperComponentProps> = ({
       // install Swiper modules
       modules={[Autoplay]}
       autoplay={true}
-      spaceBetween={perView === 1 ? 0 : -50}
+      spaceBetween={perView < 2 ? 0 : -100}
       slidesPerView={perView}
     >
       {closestEvents.map((event: any) => (

@@ -4,6 +4,7 @@ import TwoSides from "../components/homeComponents/TwoSides";
 import UpCommingEvents from "../components/homeComponents/UpCommingEvents";
 import { GetStaticProps } from "next";
 import { getClosestEvents } from "../withDB";
+import Contact from "../components/homeComponents/Contact";
 
 interface IndexProps {
   jdata: string;
@@ -14,6 +15,7 @@ const Index: React.FC<IndexProps> = ({ jdata }) => {
       <Home />
       <TwoSides />
       <UpCommingEvents closestEvents={JSON.parse(jdata)} />
+      <Contact />
     </div>
   );
 };
