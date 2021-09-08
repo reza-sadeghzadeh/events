@@ -188,10 +188,7 @@ const Div = styled.main`
     label {
       font-weight: 300;
     }
-    textarea {
-      resize: vertical;
-      height: 200px;
-    }
+
     input[type="file"] {
       margin-bottom: 3rem;
       margin-top: 1rem;

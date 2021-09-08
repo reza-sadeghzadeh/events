@@ -51,6 +51,15 @@ button,
 input {
   overflow: visible;
 }
+button {
+  background-color: transparent;
+  color: #9b4dca;
+  border: 1px solid #9b4dca;
+}
+button:hover {
+  background-color: #9b4dca;
+  color: white;
+}
 
 button,
 select {
@@ -140,6 +149,11 @@ input[type="file"] {
   border-radius: 5px;
   height: 5vh;
 }
+textarea {
+  resize: vertical;
+  height: 200px;
+}
+
 /* 
 [type="checkbox"],
 [type="radio"] {

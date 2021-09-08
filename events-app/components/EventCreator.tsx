@@ -1,14 +1,15 @@
 import React from "react";
 import styled from "styled-components";
 import Link from "next/link";
-import { FaRegClock, FaMapMarkerAlt } from "react-icons/fa";
+import { FaRegClock, FaMapMarkerAlt, FaUserAlt } from "react-icons/fa";
 import Image from "next/image";
 
 interface EventCreatorProps {
   events: object[];
+  moreDetails: boolean;
 }
 
-const EventCreator: React.FC<EventCreatorProps> = ({ events }) => {
+const EventCreator: React.FC<EventCreatorProps> = ({ events, moreDetails }) => {
   return (
     <Div>
       <ul>
@@ -42,7 +43,22 @@ const EventCreator: React.FC<EventCreatorProps> = ({ events }) => {
                 </address>
               </div>
               <p>{e.summary} </p>
-              <Link href={`/events/${e.id}`}>صفحه رویداد</Link>
+              {!moreDetails && (
+                <Link href={`/events/${e.id}`}>صفحه رویداد</Link>
+              )}
+              {moreDetails && (
+                <div>
+                  <h2>
+                    <h3>تعداد ثبت نام</h3>
+                    {e.signups.length} <FaUserAlt />
+                  </h2>
+                </div>
+              )}
+              {e.signupLimit - e.signups.length <= 5 && (
+                <div className="warning flex-center">
+                  تنها {e.signupLimit - e.signups.length} ظرفیت باقی مانده
+                </div>
+              )}
             </div>
           </li>
         ))}
@@ -60,7 +76,18 @@ const Div = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+
+  .warning {
+    height: 25px;
+    position: absolute;
+    bottom: 0;
+    color: white;
+    left: 0;
+    width: 100%;
+    background-color: lightcoral;
+  }
 
   ul {
     width: 100%;
@@ -85,7 +112,7 @@ const Div = styled.div`
   li {
     margin: 0.75rem;
     width: clamp(30ch, 400px, 500px);
-    padding: 1.5rem;
+    padding: 2.5rem 1.5rem;
     border: #d1d1d1 1px solid;
     background-color: transparent;
     transition: 0.3s ease box-shadow;

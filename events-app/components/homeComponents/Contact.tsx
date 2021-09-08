@@ -4,7 +4,7 @@ import styled from "styled-components";
 function Contact() {
   return (
     <Div className="flex-center">
-      <div className="holder">
+      <div className="holder flex-center">
         <h2>هیچ رویدادی رو از دست نده</h2>
       </div>
       <div className="input-holder flex-center">
@@ -23,9 +23,7 @@ const Div = styled.section`
   margin-bottom: 3rem;
 
   .holder {
-    width: 270px;
     position: relative;
-    margin-right: 5rem;
     font-weight: 100;
 
     h2 {

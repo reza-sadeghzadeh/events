@@ -1,11 +1,10 @@
 import EventCreator from "./EventCreator";
-import { Autoplay } from "swiper";
+import { Scrollbar } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
-import Router from "next/router";
 
 // Import Swiper styles
 import "swiper/css";
-import "swiper/css/autoplay";
+import "swiper/css/scrollbar";
 
 import { useEffect, useState } from "react";
 
@@ -28,15 +27,15 @@ const SwiperComponent: React.FC<SwiperComponentProps> = ({
 
   return (
     <Swiper
-      // install Swiper modules
-      modules={[Autoplay]}
-      autoplay={Router ? true : false}
+      modules={[Scrollbar]}
       spaceBetween={perView < 2 ? 0 : -100}
       slidesPerView={perView}
+      scrollbar={{ draggable: true }}
+      pagination={{ clickable: true }}
     >
       {closestEvents.map((event: any) => (
         <SwiperSlide key={event.id}>
-          <EventCreator events={[event]} />
+          <EventCreator moreDetails={false} events={[event]} />
         </SwiperSlide>
       ))}
     </Swiper>

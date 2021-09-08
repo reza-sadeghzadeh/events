@@ -26,7 +26,7 @@ const Home: React.FC<HomeProps> = ({ JData, length, page, numberInPage }) => {
 
   return (
     <Div>
-      <EventCreator events={events} />
+      <EventCreator moreDetails={false} events={events} />
       <div className="pagination">
         {dataRange.map((d) => (
           <div
