@@ -30,7 +30,7 @@ const SwiperComponent: React.FC<SwiperComponentProps> = ({
       modules={[Scrollbar]}
       spaceBetween={perView < 2 ? 0 : -100}
       slidesPerView={perView}
-      scrollbar={{ draggable: true }}
+      // scrollbar={{ draggable: true }}
       pagination={{ clickable: true }}
     >
       {closestEvents.map((event: any) => (

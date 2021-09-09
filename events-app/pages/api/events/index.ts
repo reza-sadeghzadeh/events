@@ -1,6 +1,5 @@
-// imp
 import type { NextApiRequest, NextApiResponse } from "next";
-import { eventModel } from "../../withDB";
+import { eventModel } from "../../../withDB";
 import nextConnect from "next-connect";
 import multer from "multer";
 

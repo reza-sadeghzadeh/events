@@ -83,6 +83,7 @@ const Div = styled.section`
       position: sticky;
       top: 0;
     }
+
     @media screen and (min-width: 1000px) {
       flex-direction: row;
       align-items: flex-start;
@@ -93,6 +94,9 @@ const Div = styled.section`
         margin-top: 3rem;
         text-align: right;
       }
+    }
+    @media screen and (min-width: 1700px) {
+      width: 1700px;
     }
   }
 `;

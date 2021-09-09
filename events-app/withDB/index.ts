@@ -1,13 +1,6 @@
 import mongoose from "mongoose";
+import connectToDb from "./connect";
 
-function connectToDb() {
-  mongoose
-    .connect("mongodb://localhost:27017/events")
-    .catch((ex) => console.log(ex))
-    .then(() => {
-      console.log("connected to db....");
-    });
-}
 connectToDb();
 
 export const eventModel = () => {

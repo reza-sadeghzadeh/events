@@ -6,6 +6,8 @@ import styled from "styled-components";
 import HeaderNav from "../components/Header";
 import { ThemeProvider } from "styled-components";
 import Footer from "../components/homeComponents/Footer";
+// import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const theme = {};
 
@@ -13,11 +15,13 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <Div>
       <ThemeProvider theme={theme}>
+        {/* <ToastContainer> */}
         <div className="header">
           <HeaderNav />
         </div>
         <Component {...pageProps} />
         <Footer />
+        {/* </ToastContainer> */}
       </ThemeProvider>
     </Div>
   );

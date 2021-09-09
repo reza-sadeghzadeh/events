@@ -27,7 +27,7 @@ const Div = styled.section`
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  margin: 0;
+  margin-top: 2rem;
 
   .holder {
     width: 180px;

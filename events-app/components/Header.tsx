@@ -13,7 +13,7 @@ function Header() {
         />
         <div className="content flex-center">
           <h3 onClick={() => Router.push("/events?currentPage=1")}>رویدادها</h3>
-          <button>ورود</button>
+          <button onClick={() => Router.push("/login")}>ورود</button>
         </div>
       </div>
     </Div>

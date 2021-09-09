@@ -5,10 +5,10 @@ function Footer() {
   return (
     <Div className="flex-center">
       <div className="banner"></div>
-      <h2>
+      <h4>
         Designed by{" "}
         <a href="https://github.com/reza-sadeghzadeh">Reza Sadeghzadeh</a>
-      </h2>
+      </h4>
     </Div>
   );
 }
@@ -28,20 +28,21 @@ const Div = styled.footer`
     position: absolute;
     border-top: 5px solid #9b4dca;
     width: 100%;
-    bottom: -30%;
+    bottom: -50%;
     height: 300px;
     background-color: #1d1d1d;
     transform: skewY(3deg);
     z-index: 5;
   }
-  h2 {
+  h4 {
     position: absolute;
     bottom: 15%;
     text-align: center;
     left: 50%;
+    font-family: sans-serif;
     transform: translateX(-50%);
     z-index: 10;
-    font-weight: 100;
+    font-weight: 200;
     color: white;
     a {
       display: inline;
