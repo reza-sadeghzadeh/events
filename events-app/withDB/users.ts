@@ -14,7 +14,7 @@ const getUsersModel = () => {
     password: {
       type: String,
       minlength: 8,
-      maxlength: 32,
+      maxlength: 1024,
       required: true,
     },
     lastname: {
@@ -51,4 +51,9 @@ export const createUser = async (user: object) => {
   let newUser = new UserModel(user);
   newUser = await newUser.save();
   return newUser;
+};
+export const getUser = async (user: object) => {
+  const UserModel = getUsersModel();
+  let gotUser = UserModel.findOne({ email: user.email });
+  return gotUser;
 };

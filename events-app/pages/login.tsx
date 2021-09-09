@@ -1,18 +1,34 @@
-import React from "react";
+import React, { useRef } from "react";
+import Router from "next/router";
+import _ from "lodash";
 import styled from "styled-components";
 import Link from "next/link";
 import { FaUser } from "react-icons/fa";
+import axios from "axios";
+import { toast, ToastContainer } from "react-toastify";
 
 function Login() {
-  const handleSubmit = () => {
-    //validate user
+  const formRef = useRef();
+
+  const handleSubmit = async () => {
+    let data = formRef.current.getElementsByTagName("input");
+    let form: object = _.pick(data, ["email", "password"]);
+
+    let user: {} = {};
+    for (let index in form) {
+      user[index] = form[index].value;
+    }
+    let { data: newData } = await axios.post("/api/users/login", user);
+    if (newData.error) toast(newData.error);
+    else Router.replace("/");
   };
 
   return (
     <Div className="flex-center">
+      <ToastContainer />
       <div className="container flex-center">
         <FaUser />
-        <div className="form">
+        <div ref={formRef} className="form">
           <input
             type="text"
             name="email"
@@ -28,7 +44,7 @@ function Login() {
             autoComplete="off"
           />
         </div>
-        <button onSubmit={() => handleSubmit()}>ورود</button>
+        <button onClick={handleSubmit}>ورود</button>
         <h4>
           حساب کاربری ندارید؟
           <span>

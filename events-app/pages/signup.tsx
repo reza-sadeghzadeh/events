@@ -3,6 +3,7 @@ import styled from "styled-components";
 import _ from "lodash";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
+import Router from "next/router";
 
 function Login() {
   const formRef = useRef<HTMLInputElement>(null);
@@ -22,12 +23,12 @@ function Login() {
     for (let index in form) {
       user[index] = form[index].value;
     }
-    console.log(user);
+
     if (user.password !== user.repeatedPassword)
       toast("پسورد و تکرار پسور برابر نیستند");
     let { data: newData } = await axios.post("/api/users", user);
     if (newData.error) toast(newData.error);
-    else toast("newData");
+    else Router.replace("/");
   };
 
   return (

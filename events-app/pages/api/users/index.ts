@@ -1,6 +1,7 @@
 import { createUser } from "../../../withDB/users";
 import type { NextApiRequest, NextApiResponse } from "next";
 import Joi from "joi";
+import bcrypt from "bcrypt";
 import _ from "lodash";
 
 const getUserJoiSchema = () => {
@@ -72,6 +73,9 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
   if (error) {
     return res.status(200).json({ error: error.details[0].message });
   }
+
+  const salt = await bcrypt.genSalt();
+  user.password = await bcrypt.hash(user.password, salt);
 
   user = await createUser(user);
 
