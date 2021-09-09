@@ -59,6 +59,8 @@ const Div = styled.section`
   margin-bottom: 6rem;
 
   .container {
+    width: clamp(300px, 90%, 1700px);
+    justify-content: space-around;
     flex-direction: column-reverse;
 
     .main {
@@ -79,7 +81,7 @@ const Div = styled.section`
       }
     }
     .card {
-      width: clamp(400px, 20%, 400px);
+      width: clamp(350px, 20%, 400px);
       position: sticky;
       top: 0;
     }

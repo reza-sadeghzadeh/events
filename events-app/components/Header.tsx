@@ -1,8 +1,11 @@
 import Router from "next/router";
-import React from "react";
+import React, { useState } from "react";
+import { FaUser } from "react-icons/fa";
 import styled from "styled-components";
 
-function Header() {
+function Header({ thisUser }) {
+  const [dropDown, setDropDown] = useState(false);
+
   return (
     <Div className="flex-center">
       <div className="container flex-center">
@@ -13,7 +16,31 @@ function Header() {
         />
         <div className="content flex-center">
           <h3 onClick={() => Router.push("/events?currentPage=1")}>رویدادها</h3>
-          <button onClick={() => Router.push("/login")}>ورود</button>
+          {!thisUser && (
+            <button onClick={() => Router.push("/login")}>ورود</button>
+          )}
+          {thisUser && (
+            <div
+              onMouseEnter={() => setDropDown(true)}
+              onMouseLeave={() => setDropDown(false)}
+              className="profile flex-center"
+            >
+              <FaUser />
+              <h3>{thisUser}</h3>
+              <ul className={dropDown ? "" : "hide"}>
+                <li>پروفایل</li>
+                <li
+                  onClick={() => {
+                    document.cookie = "X-token=";
+                    Router.replace("/");
+                    window.location.replace("/");
+                  }}
+                >
+                  خروج
+                </li>
+              </ul>
+            </div>
+          )}
         </div>
       </div>
     </Div>
@@ -29,6 +56,35 @@ const Div = styled.nav`
   position: fixed;
   top: 0;
   z-index: 10;
+
+  .profile {
+    margin-right: 2rem;
+    justify-content: space-between;
+    width: 50px;
+    cursor: pointer;
+    position: relative;
+
+    ul.hide {
+      display: none;
+    }
+
+    ul {
+      list-style: none;
+      position: absolute;
+      left: 0;
+      top: 100%;
+      border: 1px solid #f0f0f0;
+
+      li {
+        padding: 0.5rem 5rem;
+
+        background-color: #fff;
+        :hover {
+          background-color: #f0f0f0;
+        }
+      }
+    }
+  }
 
   .container {
     width: 100%;
@@ -68,6 +124,10 @@ const Div = styled.nav`
     @media screen and (min-width: 600px) {
       justify-content: space-around;
       padding: 0;
+
+      ul {
+        left: -150%;
+      }
 
       .content {
         button {

@@ -28,7 +28,10 @@ function Login() {
       toast("پسورد و تکرار پسور برابر نیستند");
     let { data: newData } = await axios.post("/api/users", user);
     if (newData.error) toast(newData.error);
-    else Router.replace("/");
+    else {
+      document.cookie = `X-token=${newData}`;
+      Router.replace("/");
+    }
   };
 
   return (

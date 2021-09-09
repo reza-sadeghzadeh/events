@@ -20,7 +20,11 @@ function Login() {
     }
     let { data: newData } = await axios.post("/api/users/login", user);
     if (newData.error) toast(newData.error);
-    else Router.replace("/");
+    else {
+      document.cookie = `X-token=${newData.jwt}`;
+      window.location.replace("/");
+      Router.replace("/");
+    }
   };
 
   return (

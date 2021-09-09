@@ -47,8 +47,9 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
   let result = await bcrypt.compare(user.password, gotUser.password);
 
   if (result) {
+    //I should replace this hard coded privateKey with environment variable
     let newJwt = await jwt.sign({ _id: gotUser._id }, "thisismysecretkey");
-    return res.setHeader("X-token", newJwt).status(200).json({});
+    return res.status(200).json({ jwt: newJwt });
   }
   return res.status(200).json({ error: "رمز عبور یا ایمیل نادرست است" });
 }
