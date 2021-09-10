@@ -4,7 +4,7 @@ import jwt from "jsonwebtoken";
 
 connectToDb();
 
-const getUsersModel = () => {
+export const getUsersModel = () => {
   const userSchema = new mongoose.Schema({
     name: {
       type: String,
@@ -62,7 +62,9 @@ export const getUserbyJwt = async (token: string) => {
   let id = jwt.decode(token);
 
   const UserModel = getUsersModel();
-  let gotUser = await UserModel.findOne({ _id: id._id }).select("name");
+  let gotUser = await UserModel.findOne({ _id: id._id }).select(
+    "name lastname email phonenumber"
+  );
   // console.log(gotUser);
   return gotUser;
 };

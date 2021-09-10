@@ -24,7 +24,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     let token = cookiObg["X-token"];
     if (token) {
       let { data } = await axios.post("/api/users/getUser", { token: token });
-      if (data) setUser(data.name);
+      if (data) setUser(data);
     }
     return;
   }, []);

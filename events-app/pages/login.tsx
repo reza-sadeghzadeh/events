@@ -31,9 +31,8 @@ const Login: React.FC<LoginProps> = ({ user }) => {
       if (document.referrer !== "http://localhost:3000/login")
         window.location.replace(document.referrer);
       else {
-        if (Router.asPath !== "/login")
-          window.location.replace(document.referrer);
-        else window.location.replace("/");
+        if (document.referrer.match(/login$/)) window.location.replace("/");
+        else window.location.replace(document.referrer);
       }
     }
   };

@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { FaUser } from "react-icons/fa";
 
 interface HeaderProps {
-  thisUser: string;
+  thisUser: {};
 }
 
 import styled from "styled-components";
@@ -31,13 +31,12 @@ const Header: React.FC<HeaderProps> = ({ thisUser }) => {
               className="profile flex-center"
             >
               <FaUser />
-              <h3>{thisUser}</h3>
+              <h3>{thisUser.name}</h3>
               <ul className={dropDown ? "" : "hide"}>
                 <li>پروفایل</li>
                 <li
                   onClick={() => {
                     document.cookie = "X-token=;";
-                    console.log(document.cookie);
                     window.location.reload();
                   }}
                 >

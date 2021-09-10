@@ -1,18 +1,28 @@
 import React from "react";
 import { GetServerSideProps } from "next";
+import Router from "next/router";
 import { getOneEventById, getClosestEvents } from "../../withDB";
 import styled from "styled-components";
 import EventCreator from "../../components/EventCreator";
 import Comment from "../../components/Comment";
 import UpCommingEvents from "../../components/homeComponents/UpCommingEvents";
+import axios from "axios";
 
 interface EventIdProps {
   JData: string;
   JEvents: string;
-  user: string;
+  user: {};
 }
 
 const EventId: React.FC<EventIdProps> = ({ JData, JEvents, user }) => {
+  const handleSignUp = async () => {
+    await axios.post("/api/signup", {
+      user: user,
+      eventId: Router.query.eventId,
+    });
+    window.location.replace("");
+  };
+
   let event = JSON.parse(JData);
   let events = JSON.parse(JEvents);
 
@@ -28,7 +38,7 @@ const EventId: React.FC<EventIdProps> = ({ JData, JEvents, user }) => {
             </h3>
             {user && (
               <div className="signup flex-center">
-                <button>ثبت نام </button>
+                <button onClick={handleSignUp}>ثبت نام </button>
               </div>
             )}
             {!user && (
