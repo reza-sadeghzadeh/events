@@ -9,9 +9,10 @@ import UpCommingEvents from "../../components/homeComponents/UpCommingEvents";
 interface EventIdProps {
   JData: string;
   JEvents: string;
+  user: string;
 }
 
-const EventId: React.FC<EventIdProps> = ({ JData, JEvents }) => {
+const EventId: React.FC<EventIdProps> = ({ JData, JEvents, user }) => {
   let event = JSON.parse(JData);
   let events = JSON.parse(JEvents);
 
@@ -25,11 +26,20 @@ const EventId: React.FC<EventIdProps> = ({ JData, JEvents }) => {
             <h3>
               ظرفیت : <span>{event.signupLimit}</span> نفر
             </h3>
-
-            <div className="signup flex-center">
-              <button>ثبت نام </button>
-            </div>
-            <Comment comments={event.comments} />
+            {user && (
+              <div className="signup flex-center">
+                <button>ثبت نام </button>
+              </div>
+            )}
+            {!user && (
+              <div>
+                <h3>
+                  برای ثبت نام یا ثبت نظر باید <a href="/login">وارد</a> شوید،
+                  اگر حساب ندارید <a href="/signup">اینجا</a> بسازید
+                </h3>
+              </div>
+            )}
+            {user && <Comment comments={event.comments} />}
           </div>
           <div className="card">
             <EventCreator events={[event]} moreDetails={true} />
@@ -81,7 +91,7 @@ const Div = styled.section`
       }
     }
     .card {
-      width: clamp(350px, 20%, 400px);
+      width: clamp(350px, 40%, 450px);
       position: sticky;
       top: 0;
     }

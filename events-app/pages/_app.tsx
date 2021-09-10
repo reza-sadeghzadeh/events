@@ -26,6 +26,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       let { data } = await axios.post("/api/users/getUser", { token: token });
       if (data) setUser(data.name);
     }
+    return;
   }, []);
 
   return (
@@ -35,7 +36,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <div className="header">
           <HeaderNav thisUser={user} />
         </div>
-        <Component {...pageProps} />
+        <Component user={user} {...pageProps} />
         <Footer />
         {/* </ToastContainer> */}
       </ThemeProvider>

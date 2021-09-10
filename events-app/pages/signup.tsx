@@ -5,7 +5,12 @@ import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import Router from "next/router";
 
-function Login() {
+interface LoginProps {
+  user: string;
+}
+
+const Login: React.FC<LoginProps> = ({ user }) => {
+  if (user) Router.replace("/");
   const formRef = useRef<HTMLInputElement>(null);
 
   const handleSignupSubmit = async () => {
@@ -19,18 +24,21 @@ function Login() {
       "phoneNumber",
     ]);
 
-    let user: {} = {};
+    let userInfo: { password: string; repeatedPassword: string } = {
+      password: "",
+      repeatedPassword: "",
+    };
     for (let index in form) {
-      user[index] = form[index].value;
+      userInfo[index] = form[index].value;
     }
 
-    if (user.password !== user.repeatedPassword)
+    if (userInfo.password !== userInfo.repeatedPassword)
       toast("پسورد و تکرار پسور برابر نیستند");
-    let { data: newData } = await axios.post("/api/users", user);
+    let { data: newData } = await axios.post("/api/users", userInfo);
     if (newData.error) toast(newData.error);
     else {
-      document.cookie = `X-token=${newData}`;
-      Router.replace("/");
+      document.cookie = `X-token=${newData.jwt};`;
+      window.location.replace(document.referrer);
     }
   };
 
@@ -68,7 +76,7 @@ function Login() {
       </div>
     </Div>
   );
-}
+};
 
 export default Login;
 

@@ -7,8 +7,14 @@ import { FaUser } from "react-icons/fa";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 
-function Login() {
-  const formRef = useRef();
+interface LoginProps {
+  user: string;
+}
+
+const Login: React.FC<LoginProps> = ({ user }) => {
+  if (user) Router.replace("/");
+
+  const formRef = useRef<HTMLDivElement>();
 
   const handleSubmit = async () => {
     let data = formRef.current.getElementsByTagName("input");
@@ -21,9 +27,14 @@ function Login() {
     let { data: newData } = await axios.post("/api/users/login", user);
     if (newData.error) toast(newData.error);
     else {
-      document.cookie = `X-token=${newData.jwt}`;
-      window.location.replace("/");
-      Router.replace("/");
+      document.cookie = `X-token=${newData.jwt};`;
+      if (document.referrer !== "http://localhost:3000/login")
+        window.location.replace(document.referrer);
+      else {
+        if (Router.asPath !== "/login")
+          window.location.replace(document.referrer);
+        else window.location.replace("/");
+      }
     }
   };
 
@@ -41,7 +52,7 @@ function Login() {
             autoComplete="off"
           />
           <input
-            type="text"
+            type="password"
             name="password"
             id="password"
             placeholder="رمز عبور"
@@ -60,7 +71,7 @@ function Login() {
       </div>
     </Div>
   );
-}
+};
 
 export default Login;
 

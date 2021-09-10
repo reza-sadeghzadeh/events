@@ -1,9 +1,14 @@
 import Router from "next/router";
 import React, { useState } from "react";
 import { FaUser } from "react-icons/fa";
+
+interface HeaderProps {
+  thisUser: string;
+}
+
 import styled from "styled-components";
 
-function Header({ thisUser }) {
+const Header: React.FC<HeaderProps> = ({ thisUser }) => {
   const [dropDown, setDropDown] = useState(false);
 
   return (
@@ -31,9 +36,9 @@ function Header({ thisUser }) {
                 <li>پروفایل</li>
                 <li
                   onClick={() => {
-                    document.cookie = "X-token=";
-                    Router.replace("/");
-                    window.location.replace("/");
+                    document.cookie = "X-token=;";
+                    console.log(document.cookie);
+                    window.location.reload();
                   }}
                 >
                   خروج
@@ -45,7 +50,7 @@ function Header({ thisUser }) {
       </div>
     </Div>
   );
-}
+};
 
 export default Header;
 
@@ -110,7 +115,8 @@ const Div = styled.nav`
         border: 1px solid #9b4dca;
         margin-right: 1rem;
         font-weight: 100;
-        padding: 0 1rem;
+        padding: 0;
+        line-height: 2.5rem;
         transition: 0.3s ease all;
         background-color: white;
         color: #9b4dca;

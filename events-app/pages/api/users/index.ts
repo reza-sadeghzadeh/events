@@ -1,6 +1,7 @@
 import { createUser } from "../../../withDB/users";
 import type { NextApiRequest, NextApiResponse } from "next";
 import Joi from "joi";
+import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 import _ from "lodash";
 
@@ -77,7 +78,8 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
   const salt = await bcrypt.genSalt();
   user.password = await bcrypt.hash(user.password, salt);
 
-  user = await createUser(user);
+  const gotUser: { _id: string } = await createUser(user);
+  let token = await jwt.sign({ _id: gotUser._id }, "thisismyprivatekey");
 
-  res.status(200).json(user);
+  res.status(200).json({ jwt: token });
 }
