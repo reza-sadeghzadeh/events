@@ -48,8 +48,8 @@ const EventCreator: React.FC<EventCreatorProps> = ({ events, moreDetails }) => {
               )}
               {moreDetails && (
                 <div>
+                  <h3>تعداد ثبت نام</h3>
                   <h2>
-                    <h3>تعداد ثبت نام</h3>
                     {e.signups.length} <FaUserAlt />
                   </h2>
                 </div>

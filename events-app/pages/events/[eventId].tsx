@@ -7,6 +7,7 @@ import EventCreator from "../../components/EventCreator";
 import Comment from "../../components/Comment";
 import UpCommingEvents from "../../components/homeComponents/UpCommingEvents";
 import axios from "axios";
+import { toast, ToastContainer } from "react-toastify";
 
 interface EventIdProps {
   JData: string;
@@ -22,6 +23,15 @@ const EventId: React.FC<EventIdProps> = ({ JData, JEvents, user }) => {
     });
     window.location.replace("");
   };
+  const handleComment = async (formValues: {}) => {
+    let comment = { ...formValues, ...user, date: new Date() };
+    let { data } = await axios.post("/api/comment", {
+      comment: comment,
+      eventId: Router.query.eventId,
+    });
+    if (data.error) toast(data.error);
+    else window.location.replace("");
+  };
 
   let event = JSON.parse(JData);
   let events = JSON.parse(JEvents);
@@ -29,6 +39,7 @@ const EventId: React.FC<EventIdProps> = ({ JData, JEvents, user }) => {
   return (
     <>
       <Div className="flex-center">
+        <ToastContainer />
         <div className="container flex-center">
           <div className="main">
             <h2> {event.title}</h2>
@@ -49,7 +60,7 @@ const EventId: React.FC<EventIdProps> = ({ JData, JEvents, user }) => {
                 </h3>
               </div>
             )}
-            {user && <Comment comments={event.comments} />}
+            <Comment handleComment={handleComment} comments={event.comments} />
           </div>
           <div className="card">
             <EventCreator events={[event]} moreDetails={true} />
@@ -101,7 +112,7 @@ const Div = styled.section`
       }
     }
     .card {
-      width: clamp(350px, 40%, 450px);
+      width: clamp(350px, 90%, 500px);
       position: sticky;
       top: 0;
     }

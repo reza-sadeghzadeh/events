@@ -59,7 +59,7 @@ export const getUser = async (user: object) => {
   return gotUser;
 };
 export const getUserbyJwt = async (token: string) => {
-  let id = jwt.decode(token);
+  let id: { _id: string } = jwt.decode(token);
 
   const UserModel = getUsersModel();
   let gotUser = await UserModel.findOne({ _id: id._id }).select(
