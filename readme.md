@@ -7,7 +7,7 @@ download the UI from here: (.fig file - Figma file) https://1drv.ms/u/s!AtIoK8pb
 This is a full-stack events website. It shows the upcoming events and has some functionalities.
 Since this project is created on top of Nextjs, both front-end and back-end are in the same directory (/src).
 in case of the database, I used MongoDB and mongoose library to handle the operations and queries.
-it has multiple pages and for each event, dynamically it creates a page base on the template.
+it has multiple pages and for each event, creates pages based on the template dynamically.
 - users can log in/logout
 - users can comment below the events
 - logged in users can sign up for an event
