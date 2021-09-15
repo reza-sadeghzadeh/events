@@ -40,6 +40,12 @@ function MyApp({ Component, pageProps }: AppProps) {
             name="description"
             content="An Events website created by https://github.com/reza-sadeghzadeh"
           />
+          <link
+            rel="shortcut icon"
+            href="/images/Asset-logo.svg"
+            type="image/x-icon"
+            sizes="32x32"
+          />
         </Head>
         <div className="header">
           <HeaderNav thisUser={user} />
