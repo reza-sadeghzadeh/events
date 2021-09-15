@@ -6,6 +6,7 @@ import Link from "next/link";
 import { FaUser } from "react-icons/fa";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
+import HeadContent from "../components/HeadContent";
 
 interface LoginProps {
   user: string;
@@ -39,6 +40,7 @@ const Login: React.FC<LoginProps> = ({ user }) => {
 
   return (
     <Div className="flex-center">
+      <HeadContent pageName="ورود" />
       <ToastContainer />
       <div className="container flex-center">
         <FaUser />

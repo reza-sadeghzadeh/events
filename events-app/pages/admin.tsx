@@ -3,6 +3,7 @@ import { useRef } from "react";
 import { toGregorian } from "jalaali-js";
 import styled from "styled-components";
 import axios from "axios";
+import HeadContent from "../components/HeadContent";
 
 function Admin() {
   const [image, setImage] = useState();
@@ -69,6 +70,7 @@ function Admin() {
 
   return (
     <Div>
+      <HeadContent pageName="داشبورد ادمین" />
       <h1>ثبت رویداد</h1>
       <form onSubmit={handleSubmit}>
         <label htmlFor="title">عنوان رویداد</label>

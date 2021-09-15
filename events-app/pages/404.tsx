@@ -1,7 +1,9 @@
 import styled from "styled-components";
+import HeadContent from "../components/HeadContent";
 export default function Custom404() {
   return (
     <Div className="flex-center">
+      <HeadContent pageName="404 یافت نشد" />
       <img src="/images/Oops! 404 Error with a broken.svg" />
     </Div>
   );

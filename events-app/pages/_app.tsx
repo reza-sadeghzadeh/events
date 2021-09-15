@@ -6,7 +6,7 @@ import styled from "styled-components";
 import HeaderNav from "../components/Header";
 import { ThemeProvider } from "styled-components";
 import Footer from "../components/homeComponents/Footer";
-
+import Head from "next/head";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 
@@ -34,7 +34,13 @@ function MyApp({ Component, pageProps }: AppProps) {
     <Div>
       <ThemeProvider theme={theme}>
         {/* <ToastContainer> */}
-
+        <Head>
+          <title>رویداد ها</title>
+          <meta
+            name="description"
+            content="An Events website created by https://github.com/reza-sadeghzadeh"
+          />
+        </Head>
         <div className="header">
           <HeaderNav thisUser={user} />
         </div>

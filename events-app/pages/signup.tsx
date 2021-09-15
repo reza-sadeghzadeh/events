@@ -4,6 +4,7 @@ import _ from "lodash";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import Router from "next/router";
+import HeadContent from "../components/HeadContent";
 
 interface LoginProps {
   user: string;
@@ -44,6 +45,7 @@ const Login: React.FC<LoginProps> = ({ user }) => {
 
   return (
     <Div className="flex-center ">
+      <HeadContent pageName="ثبت نام" />
       <ToastContainer />
       <div className="container flex-center">
         <h2>ثبت نام</h2>

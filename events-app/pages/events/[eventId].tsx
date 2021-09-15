@@ -8,6 +8,7 @@ import Comment from "../../components/Comment";
 import UpCommingEvents from "../../components/homeComponents/UpCommingEvents";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
+import HeadContent from "../../components/HeadContent";
 
 interface EventIdProps {
   JData: string;
@@ -38,6 +39,7 @@ const EventId: React.FC<EventIdProps> = ({ JData, JEvents, user }) => {
 
   return (
     <>
+      <HeadContent pageName={event.title} />
       <Div className="flex-center">
         <ToastContainer />
         <div className="container flex-center">

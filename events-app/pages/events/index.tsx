@@ -5,6 +5,7 @@ import { getAllData, getPageData } from "../../withDB";
 import { useState, useEffect } from "react";
 import _ from "lodash";
 import Router from "next/router";
+import HeadContent from "../../components/HeadContent";
 
 interface HomeProps {
   JData: string;
@@ -26,6 +27,7 @@ const Home: React.FC<HomeProps> = ({ JData, length, page, numberInPage }) => {
 
   return (
     <Div>
+      <HeadContent pageName="تمام رویدادها" />
       <EventCreator moreDetails={false} events={events} />
       <div className="pagination">
         {dataRange.map((d) => (
