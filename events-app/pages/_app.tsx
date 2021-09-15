@@ -6,6 +6,7 @@ import styled from "styled-components";
 import HeaderNav from "../components/Header";
 import { ThemeProvider } from "styled-components";
 import Footer from "../components/homeComponents/Footer";
+
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 
@@ -33,6 +34,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     <Div>
       <ThemeProvider theme={theme}>
         {/* <ToastContainer> */}
+
         <div className="header">
           <HeaderNav thisUser={user} />
         </div>
